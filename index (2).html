@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compra de Ingressos - Filmes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        nav {
+            background-color: #000000;
+            padding: 10px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav .logo a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 35px;
+            font-weight: 600;
+        }
+        nav ul {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            padding: 10px;
+        }
+        nav li {
+            margin-left: 7px;
+        }
+        nav li a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 18px;
+            font-weight: 500;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        nav li a:hover {
+            background-color: white;
+            color: black;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: rgb(0, 0, 0);
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        .filmes {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        .filme {
+            background: #000000;
+            border-radius: 10px;
+            width: 200px;
+            margin: 10px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(255, 244, 244, 0.1);
+            transition: transform 0.2s;
+        }
+        .filme:hover {
+            transform: scale(1.05);
+        }
+        .filme img {
+            width: 100%;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+        .comprar {
+            background: #28a745;
+            color: rgb(255, 255, 255);
+            border: none;
+            padding: 12px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        .comprar:hover {
+            background: #1fa73d;
+        }
+        #popup {
+            display: none; 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            background: rgba(0, 0, 0, 0.7); 
+            justify-content: center; 
+            align-items: center;
+            z-index: 1000; /* Ensure popup is on top */
+        }
+        .popup-content {
+            background: rgb(255, 255, 255); 
+            padding: 40px; 
+            border-radius: 20px; 
+            width: 500px; 
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+        .popup-content h2 {
+            margin-top: 0;
+            color: #000000;
+        }
+        .popup-content label {
+            display: block;
+            margin: 10px 0 5px;
+            text-align: left;
+        }
+        .popup-content input, .popup-content select {
+            width: 50%;
+            padding: 10px;
+            border: 1px solid #000000;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+        .popup-content button {
+            background: #000000;
+            color: rgb(248, 248, 248);
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: bold;
+            border-radius: 10px;
+            transition: background 0.3s;
+        }
+        .popup-content button:hover {
+            background: #48ff00;
+        }
+        .cancelar {
+            background: #ff0000;
+            margin-top: 10px; /* Adiciona margem superior ao botão cancelar */
+        }
+        .cancelar:hover {
+            background: #dc0f0f;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <nav>
+        <div class="logo">
+            <a id="botao1" href="niets-site.html" class="logo">CINEWOLF</a>
+        </div>
+        <ul>
+            <li><a href="cabeçalho.html"> Compre seu Ingresso </a></li>
+            <li><a href="TrendNietz.html"> Trailers </a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="filmes">
+    <div class="filme">
+        <img src="batman.jpg" alt="Filme 1">
+        <button class="comprar" onclick="finalizarCompra('Filme 1')">Comprar</button>
+    </div>
+    <div class="filme">
+        <img src="Carros_pôster.jpg" alt="Filme 2">
+        <button class="comprar" onclick="finalizarCompra('Filme 2')">Comprar</button>
+    </div>
+    <div class="filme">
+        <img src="Coringa_-Delírio-a-Dois.png" alt="Filme 3">
+        <button class="comprar" onclick="finalizarCompra('Filme 3')">Comprar</button>
+    </div>
+    <div class="filme">
+        <img src="Deadpool_&_Wolverine_cartaz.jpg" alt="Filme 4">
+        <button class="comprar" onclick="finalizarCompra('Filme 4')">Comprar</button>
+    </div>
+    <div class="filme">
+        <img src="guardiosdagalaxia.jpg" alt="Filme 5">
+        <button class="comprar" onclick="finalizarCompra('Filme 5')">Comprar</button>
+    </div>
+
+    
+</div>
+
+<!-- Popup para Finalização da Compra -->
+<div id="popup">
+    <div class="popup-content">
+        <h2>Finalizar Compra</h2>
+        <form id="compraForm">
+            <input type="hidden" id="filmeSelecionado" name="filme" value="">
+            <label for="tipoIngresso">Tipo de Ingresso:</label>
+            <select id="tipoIngresso" name="tipoIngresso" required>
+                <option value="meia">Meia Entrada (R$ 15,00)</option>
+                <option value="inteira">Entrada Inteira (R$ 30,00)</option>
+            </select>
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required>
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" required>
+            <button type="submit">Confirmar Compra</button>
+            <button type="button" class="cancelar" onclick="fecharPopup()">Cancelar</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    function finalizarCompra(filme) {
+        document.getElementById('filmeSelecionado').value = filme;
+        document.getElementById('popup').style.display = 'flex';
+    }
+
+    function fecharPopup() {
+        document.getElementById('popup').style.display = 'none';
+    }
+
+    document.getElementById('compraForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        alert('Compra realizada com sucesso!\n' + 
+              'Filme: ' + document.getElementById('filmeSelecionado').value + '\n' +
+              'Tipo de Ingresso: ' + document.getElementById('tipoIngresso').value + '\n' +
+              'Nome: ' + document.getElementById('nome').value + '\n' +
+              'E-mail: ' + document.getElementById('email').value);
+        fecharPopup();
+    });
+</script>
+
+</body>
+</html>
